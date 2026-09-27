@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanishka Bai — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F1115;
+    --bg-raised:#161A20;
+    --line:#262B33;
+    --ink:#ECEAE3;
+    --ink-dim:#9CA3AF;
+    --mint:#7FE7C4;
+    --amber:#F2B84B;
+    --serif-line: 1.6;
+    --maxw: 880px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+  section{
+    padding:88px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  /* ---- Nav ---- */
+  nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(15,17,21,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .logo{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size:1.05rem;
+  }
+  .logo span{color:var(--mint);}
+  nav ul{
+    display:flex; gap:28px; list-style:none; margin:0; padding:0;
+  }
+  nav a{
+    text-decoration:none; color:var(--ink-dim); font-size:0.92rem;
+    transition:color 0.2s ease;
+  }
+  nav a:hover{color:var(--ink);}
+
+  /* ---- Hero ---- */
+  #hero{padding-top:110px; padding-bottom:100px;}
+  .hero-kicker{
+    color:var(--mint); font-size:0.92rem; font-weight:500;
+    margin-bottom:18px;
+  }
+  .hero-title{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    line-height:1.08;
+    max-width:11.5ch;
+  }
+  .hero-title em{
+    font-style:normal;
+    color:var(--mint);
+  }
+  .hero-sub{
+    margin-top:24px;
+    max-width:58ch;
+    color:var(--ink-dim);
+    font-size:1.08rem;
+  }
+  .hero-links{
+    margin-top:36px;
+    display:flex; gap:16px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:3px;
+    text-decoration:none;
+    font-size:0.92rem;
+    font-weight:500;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{
+    background:var(--mint);
+    color:#0F1115;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{border-color:var(--ink-dim);}
+
+  /* ---- Section heading ---- */
+  .sec-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin-bottom:44px;
+  }
+  .sec-num{
+    color:var(--ink-dim); font-size:0.85rem; font-variant-numeric:tabular-nums;
+  }
+  .sec-title{font-size:1.7rem;}
+
+  /* ---- About ---- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap:48px;
+  }
+  .about-text p{color:var(--ink-dim); max-width:60ch; margin:0 0 16px;}
+  .focus-list{list-style:none; padding:0; margin:0;}
+  .focus-list li{
+    padding:14px 0; border-top:1px solid var(--line);
+    font-size:0.95rem; color:var(--ink-dim);
+  }
+  .focus-list li:last-child{border-bottom:1px solid var(--line);}
+  .focus-list strong{color:var(--ink); font-weight:500; display:block; margin-bottom:4px;}
+
+  /* ---- Skills ---- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:40px;
+  }
+  .skill-group h3{
+    font-size:1rem; color:var(--ink-dim); font-weight:500;
+    margin-bottom:18px; font-family:'Inter', sans-serif;
+  }
+  .chip-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .chip{
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:8px 14px;
+    font-size:0.88rem;
+    color:var(--ink);
+  }
+  .skill-group.tech .chip{border-color:rgba(127,231,196,0.35);}
+  .skill-group.soft .chip{border-color:rgba(242,184,75,0.3);}
+
+  /* ---- Projects ---- */
+  .proj-list{display:flex; flex-direction:column;}
+  .proj{
+    display:grid;
+    grid-template-columns: 90px 1fr;
+    gap:24px;
+    padding:32px 0;
+    border-top:1px solid var(--line);
+  }
+  .proj:last-child{border-bottom:1px solid var(--line);}
+  .proj-index{
+    color:var(--ink-dim); font-size:0.85rem; padding-top:4px;
+    font-variant-numeric:tabular-nums;
+  }
+  .proj-title{font-size:1.2rem; margin-bottom:10px;}
+  .proj-desc{color:var(--ink-dim); font-size:0.96rem; max-width:64ch; margin:0;}
+  .proj-tags{margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;}
+  .tag{
+    font-size:0.76rem; color:var(--mint);
+    border:1px solid rgba(127,231,196,0.3);
+    padding:4px 10px; border-radius:3px;
+  }
+
+  /* ---- Connect ---- */
+  #connect{border-bottom:none;}
+  .connect-inner{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    flex-wrap:wrap; gap:24px;
+  }
+  .connect-title{font-size:1.9rem; max-width:14ch;}
+  .connect-links{display:flex; flex-direction:column; gap:10px; align-items:flex-end;}
+  .connect-links a{text-decoration:none; color:var(--ink-dim); font-size:0.95rem;}
+  .connect-links a:hover{color:var(--mint);}
+  footer{
+    padding:28px 0 40px;
+    color:var(--ink-dim);
+    font-size:0.82rem;
+    text-align:center;
+  }
+
+  @media (max-width: 720px){
+    .about-grid, .skills-grid{grid-template-columns:1fr;}
+    .proj{grid-template-columns:1fr;}
+    .proj-index{padding-top:0;}
+    nav ul{gap:16px;}
+    .connect-inner{flex-direction:column; align-items:flex-start;}
+    .connect-links{align-items:flex-start;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .btn-primary:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Kanishka<span>.</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-kicker">B.E CSE (AI &amp; ML) — GCT Coimbatore</div>
+    <h1 class="hero-title">Learning to build things that <em>learn</em>.</h1>
+    <p class="hero-sub">I'm Kanishka Bai, a computer science student focused on artificial intelligence and machine learning. Right now I'm strengthening my fundamentals in Python and data structures while building small, useful projects along the way.</p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="#projects">See my projects</a>
+      <a class="btn btn-ghost" href="mailto:kanishkabai2707@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">About</h2></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a CSE (AI &amp; ML) student who enjoys learning and stays curious about developing technologies. My current focus is on strengthening programming fundamentals, sharpening problem-solving skills, and going deeper into artificial intelligence.</p>
+        <p>I'm a continuous learner — still building, still improving, with plenty more to learn and build ahead.</p>
+      </div>
+      <ul class="focus-list">
+        <li><strong>Currently learning</strong>Python, Data Structures</li>
+        <li><strong>Interested in</strong>Artificial Intelligence, Machine Learning, Vibe Coding</li>
+        <li><strong>Status</strong>Learning in progress — yet to build and learn more</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-group tech">
+        <h3>Technical</h3>
+        <div class="chip-row">
+          <span class="chip">C Programming</span>
+          <span class="chip">Python</span>
+          <span class="chip">R Programming</span>
+          <span class="chip">Data Structures</span>
+          <span class="chip">Git &amp; GitHub</span>
+          <span class="chip">MIT App Inventor</span>
+          <span class="chip">AI &amp; ML Basics</span>
+        </div>
+      </div>
+      <div class="skill-group soft">
+        <h3>Soft skills</h3>
+        <div class="chip-row">
+          <span class="chip">Communication</span>
+          <span class="chip">Leadership</span>
+          <span class="chip">Teamwork</span>
+          <span class="chip">Time Management</span>
+          <span class="chip">Presentation</span>
+          <span class="chip">Adaptability</span>
+          <span class="chip">Self-Motivation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Projects</h2></div>
+    <div class="proj-list">
+
+      <div class="proj">
+        <div class="proj-index">01</div>
+        <div>
+          <h3 class="proj-title">Text to Speech Converter</h3>
+          <p class="proj-desc">An MIT App Inventor application that accepts alphabetical statements and converts them into spoken voice output, with speak and stop controls.</p>
+          <div class="proj-tags"><span class="tag">MIT App Inventor</span><span class="tag">Text-to-Speech</span></div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-index">02</div>
+        <div>
+          <h3 class="proj-title">SpeakEasy Converter</h3>
+          <p class="proj-desc">A web-based text-to-speech conversion project built as part of my learning journey into browser-based audio applications.</p>
+          <div class="proj-tags"><span class="tag">Web</span><span class="tag">Text-to-Speech</span></div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-index">03</div>
+        <div>
+          <h3 class="proj-title">Mini Dictionary</h3>
+          <p class="proj-desc">A student-level mini project storing a limited set of domain-specific words with meanings. Users can search or browse the full dictionary, while admins can add, update, or delete entries after a security check.</p>
+          <div class="proj-tags"><span class="tag">CRUD</span><span class="tag">Admin Access</span></div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-index">04</div>
+        <div>
+          <h3 class="proj-title">Procurement Status System</h3>
+          <p class="proj-desc">A system giving farmers full visibility into the crop procurement process — tracking payments, sharing live location, and planning routes to cut queue waiting time. Built with multilingual support and voice-based notifications for accessibility.</p>
+          <div class="proj-tags"><span class="tag">Multilingual</span><span class="tag">Voice Notifications</span><span class="tag">Tracking</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="wrap">
+    <div class="connect-inner">
+      <h2 class="connect-title">Let's connect and learn together.</h2>
+      <div class="connect-links">
+        <a href="mailto:kanishkabai2707@gmail.com">kanishkabai2707@gmail.com</a>
+        <a href="#" title="LinkedIn — coming soon">LinkedIn — coming soon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Kanishka Bai. Built while learning, one project at a time.</footer>
+
+</body>
+</html>
