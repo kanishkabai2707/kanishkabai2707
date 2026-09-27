@@ -13,7 +13,7 @@ Interested in learning about Artificial Intelligence as well as Machine Learning
 I am curious of learning new technologies which are developing.
 Currently working on strengthening my programming skill fundamentals, problem solving skills and knowledge of Artificial Intelligence.
 ---
-##Skills
+
 
 ###Technical Skills
 
